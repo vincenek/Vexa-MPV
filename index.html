@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vexa - Financial Automation</title>
+    <title>Vexa - Complete Financial Automation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -13,7 +13,8 @@
         .section-active { background: #0F172A; }
         .nav-active { border-bottom: 2px solid #3B82F6; }
         .button-hover { transition: all 0.3s ease; }
-        .button-hover:hover { transform: translateY(-1px); }
+        .button-hover:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .radial-progress { --value: 70; --size: 12rem; --thickness: 12px; }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -34,16 +35,16 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Home Section -->
     <section id="home" class="section-active">
         <div class="container mx-auto px-6 py-20 text-center">
             <h1 class="text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight">
                 <span class="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                    Financial Security Made Invisible
+                    Your Financial Exoskeleton
                 </span>
             </h1>
             <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                "Vexa automates your finances, saves for you invisibly, and grows your wealth smarter."
+                "Vexa automates your finances, saves invisibly, and grows wealth smarter through quantum AI"
             </p>
             <div class="bg-gray-800 rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
                 <p class="text-lg text-blue-400 mb-8">
@@ -67,27 +68,74 @@
         </div>
     </section>
 
-    <!-- Wallets Section -->
+    <!-- Wallets Section with Banks -->
     <section id="wallets" class="hidden">
         <div class="container mx-auto px-6 py-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8">Your Financial Armor</h2>
-                <div class="grid md:grid-cols-2 gap-8">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8">Financial Armor System</h2>
+                
+                <!-- Wallets Grid -->
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
                     <!-- Normal Wallet -->
                     <div class="bg-gray-800 p-8 rounded-2xl shadow-xl">
-                        <h3 class="text-xl font-semibold mb-4">Normal Wallet</h3>
-                        <div class="text-4xl font-bold mb-6" id="normalBalance">$5,000</div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-semibold">Normal Wallet</h3>
+                                <p class="text-gray-400">Liquid funds for daily use</p>
+                            </div>
+                            <div class="text-4xl font-bold" id="normalBalance">$5,000</div>
+                        </div>
                         <button onclick="transferToGhost()" 
                                 class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl button-hover">
-                            Secure $100 in Ghost Wallet
+                            <i class="fas fa-shield-alt mr-2"></i>Secure $100 to Ghost
                         </button>
                     </div>
 
                     <!-- Ghost Wallet -->
                     <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border-2 border-green-500">
-                        <h3 class="text-xl font-semibold mb-4">Ghost Vault</h3>
-                        <div class="text-4xl font-bold mb-6" id="ghostBalance">$2,300</div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-semibold">Ghost Vault</h3>
+                                <p class="text-gray-400">Blockchain-secured savings</p>
+                            </div>
+                            <div class="text-4xl font-bold" id="ghostBalance">$2,300</div>
+                        </div>
                         <div class="text-green-400 text-sm">Last secured: 2 hours ago</div>
+                    </div>
+                </div>
+
+                <!-- Bank Integration -->
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-semibold"><i class="fas fa-university mr-2"></i>Connected Banks</h3>
+                        <button class="bg-gray-700 px-4 py-2 rounded-lg hover:bg-gray-600">
+                            <i class="fas fa-plus mr-2"></i>Add Account
+                        </button>
+                    </div>
+                    
+                    <!-- Bank Accounts -->
+                    <div class="space-y-4">
+                        <div class="bg-gray-700 p-4 rounded-xl flex items-center justify-between">
+                            <div>
+                                <div class="font-semibold">Chase Bank •••• 4512</div>
+                                <div class="text-gray-400 text-sm">Checking Account</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold">$23,450</div>
+                                <div class="text-green-400 text-sm">Connected</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-xl flex items-center justify-between">
+                            <div>
+                                <div class="font-semibold">Wells Fargo •••• 8921</div>
+                                <div class="text-gray-400 text-sm">Savings Account</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold">$15,670</div>
+                                <div class="text-green-400 text-sm">Connected</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,7 +146,7 @@
     <section id="chat" class="hidden">
         <div class="container mx-auto px-6 py-20">
             <div class="max-w-2xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-xl">
-                <h2 class="text-3xl font-bold mb-8">Vexa Assistant</h2>
+                <h2 class="text-3xl font-bold mb-8"><i class="fas fa-robot mr-2"></i>Vexa Assistant</h2>
                 <div class="h-96 overflow-y-auto mb-6 space-y-4 pr-2" id="chatHistory">
                     <div class="bg-gray-700 p-4 rounded-xl">
                         <p class="text-blue-400">Vexa: How can I help with your finances today?</p>
@@ -122,34 +170,60 @@
         <div class="container mx-auto px-6 py-20">
             <div class="max-w-4xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-xl">
                 <h2 class="text-3xl font-bold mb-8">Quantum Financial Strategy</h2>
+                
+                <!-- Configuration Panel -->
+                <div class="bg-gray-700 p-6 rounded-xl mb-8">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-400 mb-2">Investment Amount ($)</label>
+                            <input type="number" id="investmentAmount" 
+                                   class="w-full bg-gray-600 p-3 rounded-lg"
+                                   value="10000">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 mb-2">Risk Profile</label>
+                            <select id="riskProfile" class="w-full bg-gray-600 p-3 rounded-lg">
+                                <option value="conservative">Conservative</option>
+                                <option value="moderate" selected>Moderate</option>
+                                <option value="aggressive">Aggressive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy Display -->
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-gray-700 p-8 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-4">Risk Profile</h3>
-                        <div class="radial-progress mx-auto mb-6" 
-                             style="--value:70; --size:12rem; --thickness: 12px;">
+                        <h3 class="text-xl font-semibold mb-4">Risk Analysis</h3>
+                        <div class="radial-progress mx-auto mb-6" style="--value:70">
                             <span class="text-4xl">B+</span>
                         </div>
-                        <p class="text-gray-400 text-center">Balanced growth strategy</p>
+                        <p class="text-gray-400 text-center" id="riskDescription">Balanced growth strategy</p>
                     </div>
+                    
                     <div class="bg-gray-700 p-8 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-6">Recommended Allocation</h3>
-                        <div class="space-y-4">
+                        <h3 class="text-xl font-semibold mb-6">Investment Strategy</h3>
+                        <div class="space-y-4 mb-6">
                             <div class="flex justify-between items-center">
                                 <span>Stocks</span>
-                                <span class="text-green-400 font-bold">60%</span>
+                                <span class="text-green-400 font-bold" id="stocksPercent">60%</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span>Bonds</span>
-                                <span class="text-blue-400 font-bold">30%</span>
+                                <span class="text-blue-400 font-bold" id="bondsPercent">30%</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span>Crypto</span>
-                                <span class="text-purple-400 font-bold">10%</span>
+                                <span>Alternative Assets</span>
+                                <span class="text-purple-400 font-bold" id="altPercent">10%</span>
                             </div>
                         </div>
-                        <button onclick="runProjection()" 
-                                class="w-full bg-blue-600 hover:bg-blue-700 mt-8 py-4 rounded-xl button-hover">
-                            Show 5-Year Projection
+                        <div class="bg-gray-800 p-4 rounded-xl mb-6">
+                            <div class="text-green-400 font-bold text-xl" id="projectionResult">5-Year Projection: $18,420</div>
+                            <div class="text-gray-400 text-sm">Based on current parameters</div>
+                        </div>
+                        <button onclick="calculateProjection()" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl button-hover">
+                            <i class="fas fa-calculator mr-2"></i>Update Strategy
                         </button>
                     </div>
                 </div>
@@ -166,7 +240,7 @@
             event.target.classList.add('nav-active');
         }
 
-        // Wallet Transfer System
+        // Wallet System
         let normalBalance = 5000;
         let ghostBalance = 2300;
 
@@ -180,7 +254,7 @@
             }
         }
 
-        // Chat System
+        // Chatbot System
         const chatResponses = {
             'save': 'Recommended: Save 20% of income monthly ($1,000 based on your earnings)',
             'invest': 'Optimal allocation: 60% stocks, 30% bonds, 10% crypto',
@@ -193,29 +267,48 @@
             const message = input.value.toLowerCase();
             const response = chatResponses[message] || chatResponses['default'];
             
-            // Add user message
             document.getElementById('chatHistory').innerHTML += `
                 <div class="bg-gray-700 p-4 rounded-xl">
                     <p class="text-green-400">You: ${input.value}</p>
                 </div>
-            `;
-
-            // Add bot response
-            document.getElementById('chatHistory').innerHTML += `
                 <div class="bg-gray-700 p-4 rounded-xl">
                     <p class="text-blue-400">Vexa: ${response}</p>
                 </div>
             `;
-
             input.value = '';
         }
 
-        // Projection System
-        function runProjection() {
-            showToast('Quantum simulation complete: Projected 12.4% annual growth 🚀');
+        // AI Projection System
+        function calculateProjection() {
+            const investment = parseFloat(document.getElementById('investmentAmount').value);
+            const risk = document.getElementById('riskProfile').value;
+            
+            const allocations = {
+                conservative: { stocks: 40, bonds: 50, alt: 10, growth: 0.07 },
+                moderate: { stocks: 60, bonds: 30, alt: 10, growth: 0.09 },
+                aggressive: { stocks: 80, bonds: 10, alt: 10, growth: 0.11 }
+            };
+
+            const {stocks, bonds, alt, growth} = allocations[risk];
+            
+            document.getElementById('stocksPercent').textContent = `${stocks}%`;
+            document.getElementById('bondsPercent').textContent = `${bonds}%`;
+            document.getElementById('altPercent').textContent = `${alt}%`;
+            
+            const projection = investment * Math.pow(1 + growth, 5);
+            document.getElementById('projectionResult').textContent = 
+                `5-Year Projection: $${projection.toLocaleString()}`;
+
+            document.querySelector('.radial-progress').style.setProperty('--value', 
+                risk === 'conservative' ? 50 : risk === 'moderate' ? 70 : 90);
+            
+            document.getElementById('riskDescription').textContent = 
+                `${risk.charAt(0).toUpperCase() + risk.slice(1)} Strategy`;
+
+            showToast('Strategy updated successfully ✅');
         }
 
-        // Toast Notification
+        // Toast System
         function showToast(message) {
             const toast = document.createElement('div');
             toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-green-400 px-6 py-3 rounded-xl shadow-lg';
