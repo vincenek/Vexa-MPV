@@ -3,267 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vexa - Financial Exoskeleton</title>
+    <title>Vexa - Financial Automation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <style>
-        .section-active { 
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-            border: 1px solid #2A6BFF;
-        }
-        .nav-active {
-            color: #00FF88;
-            border-bottom: 2px solid #2A6BFF;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .section-active { background: #0F172A; }
+        .nav-active { border-bottom: 2px solid #3B82F6; }
+        .button-hover { transition: all 0.3s ease; }
+        .button-hover:hover { transform: translateY(-1px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-gray-100">
     <!-- Navigation -->
-    <nav class="container mx-auto px-6 py-4 border-b border-gray-800">
-        <div class="flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="https://i.ibb.co/0jQ3ZzT/vexa-logo.png" class="w-12 h-12" alt="Vexa">
-                <span class="text-xl font-bold ml-2">VEXA</span>
-            </div>
-            <div class="space-x-6" id="navLinks">
-                <button onclick="showSection('dashboard')" class="nav-link nav-active">Dashboard</button>
-                <button onclick="showSection('wallet')" class="nav-link">Ghost Wallet</button>
-                <button onclick="showSection('ai')" class="nav-link">AI Advisor</button>
-                <button onclick="showSection('bank')" class="nav-link">Bank Accounts</button>
+    <nav class="border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="https://i.ibb.co/0jQ3ZzT/vexa-logo.png" class="w-10 h-10" alt="Vexa">
+                    <div class="space-x-6">
+                        <button onclick="showSection('home')" class="nav-link nav-active">Home</button>
+                        <button onclick="showSection('wallets')" class="nav-link">Wallets</button>
+                        <button onclick="showSection('chat')" class="nav-link">Chatbot</button>
+                        <button onclick="showSection('ai')" class="nav-link">AI Guidance</button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-8">
-        <!-- Dashboard -->
-        <section id="dashboard" class="section-active">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-gray-800 p-6 rounded-xl">
-                    <h3 class="text-gray-400 mb-2">Total Assets</h3>
-                    <p class="text-3xl font-bold text-green-400">$54,320.00</p>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-xl">
-                    <h3 class="text-gray-400 mb-2">Ghost Savings</h3>
-                    <p class="text-3xl font-bold text-blue-400">$12,450.00</p>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-xl">
-                    <h3 class="text-gray-400 mb-2">Monthly Growth</h3>
-                    <p class="text-3xl font-bold text-purple-400">+8.4%</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-800 p-6 rounded-xl">
-                    <h3 class="text-xl font-semibold mb-4">Portfolio Allocation</h3>
-                    <div id="chart"></div>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-xl">
-                    <h3 class="text-xl font-semibold mb-4">Vexa Assistant</h3>
-                    <div class="h-96 overflow-y-auto" id="chatContainer">
-                        <!-- Chat messages will be inserted here -->
-                    </div>
-                    <div class="mt-4 flex gap-2">
-                        <input type="text" id="chatInput" 
-                               class="flex-1 bg-gray-700 rounded-lg p-3" 
-                               placeholder="Ask Vexa...">
-                        <button onclick="sendMessage()" 
-                                class="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ghost Wallet -->
-        <section id="wallet" class="hidden">
-            <div class="bg-gray-800 rounded-xl p-6">
-                <h2 class="text-2xl font-bold mb-6"><i class="fas fa-ghost mr-2"></i>Ghost Wallet</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <div class="bg-gray-700 p-6 rounded-xl mb-4">
-                            <h3 class="text-gray-400 mb-2">Secure Balance</h3>
-                            <p class="text-3xl font-bold">$12,450.00</p>
-                        </div>
-                        <button onclick="addFunds()" 
-                                class="w-full bg-green-600 hover:bg-green-700 p-4 rounded-xl">
-                            Add Funds
-                        </button>
+    <!-- Hero Section -->
+    <section id="home" class="section-active">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h1 class="text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight">
+                <span class="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                    Financial Security Made Invisible
+                </span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                "Vexa automates your finances, saves for you invisibly, and grows your wealth smarter."
+            </p>
+            <div class="bg-gray-800 rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+                <p class="text-lg text-blue-400 mb-8">
+                    "Saving money shouldn't be hard. Let Vexa make it automatic, invisible, and effortless."
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-700 p-6 rounded-xl">
+                        <div class="text-3xl font-bold text-green-400 mb-2">$25,450</div>
+                        <div class="text-gray-400">Total Assets</div>
                     </div>
                     <div class="bg-gray-700 p-6 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-4">Recent Transactions</h3>
-                        <div class="space-y-3" id="walletTransactions">
-                            <!-- Transactions will be added here -->
-                        </div>
+                        <div class="text-3xl font-bold text-blue-400 mb-2">$4,230</div>
+                        <div class="text-gray-400">Monthly Saved</div>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-xl">
+                        <div class="text-3xl font-bold text-purple-400 mb-2">+9.2%</div>
+                        <div class="text-gray-400">Portfolio Growth</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- AI Advisor -->
-        <section id="ai" class="hidden">
-            <div class="bg-gray-800 rounded-xl p-6">
-                <h2 class="text-2xl font-bold mb-6"><i class="fas fa-brain mr-2"></i>Quantum Financial Advisor</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <div class="bg-gray-700 p-6 rounded-xl mb-4">
-                            <h3 class="text-gray-400 mb-4">Risk Profile</h3>
-                            <div class="radial-progress mx-auto" 
-                                 style="--value:70; --size:12rem; --thickness: 12px;">
-                                <span class="text-4xl">B+</span>
+    <!-- Wallets Section -->
+    <section id="wallets" class="hidden">
+        <div class="container mx-auto px-6 py-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8">Your Financial Armor</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Normal Wallet -->
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-xl font-semibold mb-4">Normal Wallet</h3>
+                        <div class="text-4xl font-bold mb-6" id="normalBalance">$5,000</div>
+                        <button onclick="transferToGhost()" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl button-hover">
+                            Secure $100 in Ghost Wallet
+                        </button>
+                    </div>
+
+                    <!-- Ghost Wallet -->
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl border-2 border-green-500">
+                        <h3 class="text-xl font-semibold mb-4">Ghost Vault</h3>
+                        <div class="text-4xl font-bold mb-6" id="ghostBalance">$2,300</div>
+                        <div class="text-green-400 text-sm">Last secured: 2 hours ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section id="chat" class="hidden">
+        <div class="container mx-auto px-6 py-20">
+            <div class="max-w-2xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-xl">
+                <h2 class="text-3xl font-bold mb-8">Vexa Assistant</h2>
+                <div class="h-96 overflow-y-auto mb-6 space-y-4 pr-2" id="chatHistory">
+                    <div class="bg-gray-700 p-4 rounded-xl">
+                        <p class="text-blue-400">Vexa: How can I help with your finances today?</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <input type="text" id="chatInput" 
+                           class="flex-1 bg-gray-700 px-6 py-4 rounded-xl" 
+                           placeholder="Ask me anything...">
+                    <button onclick="handleChat()" 
+                            class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl button-hover">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Guidance Section -->
+    <section id="ai" class="hidden">
+        <div class="container mx-auto px-6 py-20">
+            <div class="max-w-4xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-xl">
+                <h2 class="text-3xl font-bold mb-8">Quantum Financial Strategy</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-700 p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-4">Risk Profile</h3>
+                        <div class="radial-progress mx-auto mb-6" 
+                             style="--value:70; --size:12rem; --thickness: 12px;">
+                            <span class="text-4xl">B+</span>
+                        </div>
+                        <p class="text-gray-400 text-center">Balanced growth strategy</p>
+                    </div>
+                    <div class="bg-gray-700 p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-6">Recommended Allocation</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span>Stocks</span>
+                                <span class="text-green-400 font-bold">60%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Bonds</span>
+                                <span class="text-blue-400 font-bold">30%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Crypto</span>
+                                <span class="text-purple-400 font-bold">10%</span>
                             </div>
                         </div>
-                        <div class="bg-gray-700 p-6 rounded-xl">
-                            <h3 class="text-xl font-semibold mb-4">Recommended Allocation</h3>
-                            <div class="flex flex-col gap-2">
-                                <div class="flex justify-between">
-                                    <span>Stocks</span>
-                                    <span class="font-bold text-green-400">60%</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Bonds</span>
-                                    <span class="font-bold text-blue-400">30%</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Crypto</span>
-                                    <span class="font-bold text-purple-400">10%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-700 p-6 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-4">Portfolio Simulation</h3>
-                        <div class="mb-4">
-                            <label class="block text-gray-400 mb-2">Investment Amount ($)</label>
-                            <input type="number" id="investmentAmount" 
-                                   class="w-full bg-gray-600 rounded-lg p-3" 
-                                   value="10000">
-                        </div>
-                        <button onclick="runSimulation()" 
-                                class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded-lg">
-                            Run Quantum Simulation
+                        <button onclick="runProjection()" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 mt-8 py-4 rounded-xl button-hover">
+                            Show 5-Year Projection
                         </button>
-                        <div id="simResults" class="mt-4 hidden">
-                            <div class="text-green-400 text-xl font-bold mb-2">5-Year Projection: $18,420</div>
-                            <p class="text-gray-400">Expected annual growth: 12.9%</p>
-                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Bank Accounts -->
-        <section id="bank" class="hidden">
-            <div class="bg-gray-800 rounded-xl p-6">
-                <h2 class="text-2xl font-bold mb-6"><i class="fas fa-university mr-2"></i>Connected Accounts</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-gray-700 p-6 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-4">Link New Account</h3>
-                        <select class="w-full bg-gray-600 p-3 rounded-lg mb-4">
-                            <option>Select Bank</option>
-                            <option>Chase Bank</option>
-                            <option>Wells Fargo</option>
-                            <option>Bank of America</option>
-                        </select>
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded-lg">
-                            Connect Bank Account
-                        </button>
-                    </div>
-                    <div class="bg-gray-700 p-6 rounded-xl">
-                        <h3 class="text-xl font-semibold mb-4">Recent Transactions</h3>
-                        <div class="space-y-3" id="bankTransactions">
-                            <div class="flex justify-between items-center p-3 bg-gray-600 rounded-lg">
-                                <div>
-                                    <div class="font-semibold">Salary Deposit</div>
-                                    <div class="text-gray-400 text-sm">Chase Bank • 2 days ago</div>
-                                </div>
-                                <div class="text-green-400">+$4,500.00</div>
-                            </div>
-                            <!-- More transactions can be added here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <script>
         // Navigation System
         function showSection(sectionId) {
             document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
             document.getElementById(sectionId).classList.remove('hidden');
-            
-            document.querySelectorAll('.nav-link').forEach(link => 
-                link.classList.remove('nav-active'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('nav-active'));
             event.target.classList.add('nav-active');
         }
 
-        // Chart Initialization
-        let chart = new ApexCharts(document.querySelector("#chart"), {
-            series: [60, 30, 10],
-            chart: { type: 'donut', height: 350 },
-            labels: ['Stocks', 'Bonds', 'Crypto'],
-            colors: ['#00FF88', '#2A6BFF', '#8A2BE2'],
-            legend: { position: 'bottom' }
-        });
-        chart.render();
+        // Wallet Transfer System
+        let normalBalance = 5000;
+        let ghostBalance = 2300;
+
+        function transferToGhost() {
+            if(normalBalance >= 100) {
+                normalBalance -= 100;
+                ghostBalance += 100;
+                document.getElementById('normalBalance').textContent = `$${normalBalance}`;
+                document.getElementById('ghostBalance').textContent = `$${ghostBalance}`;
+                showToast('Savings secured invisibly 🔒');
+            }
+        }
 
         // Chat System
-        function sendMessage() {
+        const chatResponses = {
+            'save': 'Recommended: Save 20% of income monthly ($1,000 based on your earnings)',
+            'invest': 'Optimal allocation: 60% stocks, 30% bonds, 10% crypto',
+            'security': 'Ghost Wallet uses military-grade encryption and blockchain security',
+            'default': 'I recommend automatically saving 20% of each paycheck to Ghost Wallet'
+        };
+
+        function handleChat() {
             const input = document.getElementById('chatInput');
-            const container = document.getElementById('chatContainer');
+            const message = input.value.toLowerCase();
+            const response = chatResponses[message] || chatResponses['default'];
             
-            // User message
-            container.innerHTML += `
-                <div class="flex justify-end mb-4">
-                    <div class="bg-blue-600 p-3 rounded-lg max-w-[70%]">
-                        ${input.value}
-                        <div class="text-gray-300 text-sm mt-1">${new Date().toLocaleTimeString()}</div>
-                    </div>
+            // Add user message
+            document.getElementById('chatHistory').innerHTML += `
+                <div class="bg-gray-700 p-4 rounded-xl">
+                    <p class="text-green-400">You: ${input.value}</p>
                 </div>
             `;
 
-            // Bot response
-            container.innerHTML += `
-                <div class="flex justify-start mb-4">
-                    <div class="bg-gray-700 p-3 rounded-lg max-w-[70%]">
-                        ${generateResponse(input.value)}
-                        <div class="text-gray-400 text-sm mt-1">${new Date().toLocaleTimeString()}</div>
-                    </div>
+            // Add bot response
+            document.getElementById('chatHistory').innerHTML += `
+                <div class="bg-gray-700 p-4 rounded-xl">
+                    <p class="text-blue-400">Vexa: ${response}</p>
                 </div>
             `;
 
             input.value = '';
-            container.scrollTop = container.scrollHeight;
         }
 
-        function generateResponse(query) {
-            const responses = {
-                'hello': 'Hello! How can I assist you with your finances today?',
-                'save': 'Based on your income, I recommend saving 20% ($1,200/month) in your Ghost Wallet.',
-                'invest': 'Your optimal portfolio allocation is 60% stocks, 30% bonds, 10% crypto.',
-                'default': 'I recommend reviewing your Ghost Wallet savings and investment portfolio.'
-            };
-            return responses[query.toLowerCase()] || responses['default'];
+        // Projection System
+        function runProjection() {
+            showToast('Quantum simulation complete: Projected 12.4% annual growth 🚀');
         }
 
-        // Ghost Wallet Transactions
-        function addFunds() {
-            const transactions = document.getElementById('walletTransactions');
-            transactions.innerHTML = `
-                <div class="flex justify-between p-2 bg-gray-600 rounded">
-                    <span>Auto-Save Deposit</span>
-                    <span class="text-green-400">+$450.00</span>
-                </div>
-                ${transactions.innerHTML}
-            `;
-        }
-
-        // AI Simulation
-        function runSimulation() {
-            document.getElementById('simResults').classList.remove('hidden');
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-green-400 px-6 py-3 rounded-xl shadow-lg';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
         }
     </script>
 
@@ -276,13 +234,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: conic-gradient(#00FF88 calc(var(--value)*1%), #374151 0);
+            background: conic-gradient(#3B82F6 calc(var(--value)*1%), #1E293B 0);
         }
         .radial-progress::before {
             content: "";
             position: absolute;
             inset: 8px;
-            background: #1F2937;
+            background: #0F172A;
             border-radius: 50%;
         }
         .radial-progress span {
